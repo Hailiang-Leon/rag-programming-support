@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+.venv/
+venv/
+env/
+
+# Environment variables
+.env
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Data generated during development
+data/processed/*
+!data/processed/.gitkeep
+
+# Evaluation test set should be committed
+data/evaluation/*
+!data/evaluation/.gitkeep
+!data/evaluation/test_questions.json
+
+# Vector database / local storage
+chroma_db/
+*.sqlite3
+*.db
+
+# Node / frontend
+node_modules/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
