@@ -75,3 +75,24 @@ The system will be evaluated using technical and learner-facing criteria, includ
 ## Status
 
 Initial project structure created.
+
+## Running the Backend API
+
+Activate the Python virtual environment:
+
+```bash
+source .venv/bin/activate
+```
+
+Start the FastAPI backend from the project root:
+
+```bash
+python -m uvicorn src.backend.api.main:app --reload --reload-dir src --host 127.0.0.1 --port 8000
+```
+
+Available local endpoints:
+
+- Root endpoint: http://127.0.0.1:8000/
+- Health check: http://127.0.0.1:8000/health
+- Configuration check: http://127.0.0.1:8000/config-check
+- API documentation: http://127.0.0.1:8000/docs
