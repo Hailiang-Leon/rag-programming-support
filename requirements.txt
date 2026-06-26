@@ -5,8 +5,6 @@ pydantic
 httpx
 chromadb
 sentence-transformers
-langchain
-langchain-community
 pypdf
 pytest
 pytest-asyncio
