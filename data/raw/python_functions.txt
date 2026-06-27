@@ -1,0 +1,124 @@
+Python Functions
+
+A function is a reusable block of code that performs a specific task. Instead of writing the same code in multiple places, you define it once as a function and call it whenever you need it.
+
+Why Use Functions
+
+Functions make programs easier to read, easier to maintain, and easier to test. If you need to change how a task is done, you only change it in one place inside the function, rather than finding every place in your code where you wrote the same logic.
+
+Defining a Function
+
+You define a function using the def keyword, followed by the function name, parentheses, and a colon. The code inside the function must be indented.
+
+    def greet():
+        print("Hello, learner!")
+
+This defines a function called greet. The function does not run yet. It is just being defined.
+
+Calling a Function
+
+To run a function, you call it by writing its name followed by parentheses.
+
+    greet()
+
+This will output:
+    Hello, learner!
+
+You can call the same function as many times as you like.
+
+    greet()
+    greet()
+    greet()
+
+Parameters
+
+A parameter is a variable that you pass into a function when you call it. Parameters let you write flexible functions that work with different values.
+
+    def greet(name):
+        print("Hello " + name)
+
+    greet("Alice")
+    greet("Bob")
+
+This will output:
+    Hello Alice
+    Hello Bob
+
+The variable name receives the value you pass in when you call the function.
+
+Multiple Parameters
+
+A function can accept more than one parameter. Separate them with commas.
+
+    def add(a, b):
+        print(a + b)
+
+    add(3, 4)
+
+This will output:
+    7
+
+Return Values
+
+A function can send a result back to the code that called it using the return statement.
+
+    def add(a, b):
+        return a + b
+
+    result = add(3, 4)
+    print(result)
+
+This will output:
+    7
+
+The difference between using print() and return inside a function is important. print() displays output on the screen. return sends the value back so it can be stored or used in further calculations.
+
+    def square(n):
+        return n * n
+
+    value = square(5)
+    bigger = value + 10
+    print(bigger)
+
+This will output:
+    35
+
+If a function does not have a return statement, it automatically returns None.
+
+Default Parameter Values
+
+You can give a parameter a default value. If the caller does not provide a value for that parameter, the default is used.
+
+    def greet(name="learner"):
+        print("Hello " + name)
+
+    greet("Alice")
+    greet()
+
+This will output:
+    Hello Alice
+    Hello learner
+
+Code Reuse Example
+
+Without functions, if you wanted to calculate the area of three rectangles, you would repeat the same calculation three times. With a function, you write the logic once.
+
+    def rectangle_area(width, height):
+        return width * height
+
+    print(rectangle_area(4, 5))
+    print(rectangle_area(3, 7))
+    print(rectangle_area(6, 2))
+
+This will output:
+    20
+    21
+    12
+
+Common Mistakes
+
+Forgetting the colon after the def line will cause a SyntaxError.
+
+Forgetting to call the function means the code inside it never runs.
+
+Confusing print() with return is a common mistake. Use return when you want to use the result of a function in another calculation.

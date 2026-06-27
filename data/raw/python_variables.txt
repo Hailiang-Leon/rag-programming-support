@@ -1,0 +1,89 @@
+Python Variables
+
+A variable is a name that stores a value in a program. When you create a variable, Python sets aside a space in memory to hold that value. You can then use the variable name to access or change the value later.
+
+Creating a Variable
+
+In Python, you create a variable by writing the variable name, then an equals sign, then the value you want to store. This is called assignment.
+
+    name = "Alice"
+    age = 25
+    score = 98.5
+
+In this example, name stores the text "Alice", age stores the number 25, and score stores the decimal number 98.5. The equals sign here does not mean the two sides are equal. It means: take the value on the right and store it in the variable on the left.
+
+Variable Names
+
+Variable names can contain letters, numbers, and underscores. They must start with a letter or an underscore. They cannot start with a number and cannot contain spaces.
+
+Valid variable names:
+    username
+    total_score
+    player1
+    _count
+
+Invalid variable names:
+    1player        (starts with a number)
+    total score    (contains a space)
+    for            (this is a Python keyword)
+
+Python is case-sensitive. This means that age, Age, and AGE are three different variables.
+
+Changing a Variable
+
+You can change the value stored in a variable by assigning a new value to it.
+
+    score = 10
+    score = 20
+
+After these two lines, score holds the value 20. The old value 10 is replaced.
+
+Printing a Variable
+
+You can display the value of a variable using print().
+
+    name = "Alice"
+    print(name)
+
+This will output:
+    Alice
+
+You can also print text and a variable together using string concatenation or an f-string.
+
+    name = "Alice"
+    print("Hello " + name)
+    print(f"Hello {name}")
+
+Both of these will output:
+    Hello Alice
+
+Variable Types
+
+Python automatically detects the type of value you store in a variable. The most common types for beginners are:
+
+    str    for text, written inside quotes:       name = "Alice"
+    int    for whole numbers:                     age = 25
+    float  for decimal numbers:                   score = 98.5
+    bool   for True or False values:              passed = True
+
+You do not need to declare the type yourself. Python handles this for you.
+
+Using Variables in Calculations
+
+Variables that store numbers can be used in arithmetic.
+
+    price = 10
+    quantity = 3
+    total = price * quantity
+    print(total)
+
+This will output:
+    30
+
+Common Beginner Mistakes
+
+Forgetting to assign a value before using a variable will cause a NameError.
+
+    print(result)    # NameError: name 'result' is not defined
+
+Always make sure a variable has been assigned a value before you try to use it.

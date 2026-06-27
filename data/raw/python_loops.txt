@@ -1,0 +1,98 @@
+Python Loops
+
+Loops allow a program to repeat a block of code multiple times. Instead of writing the same instruction over and over, you write it once inside a loop and tell Python how many times to repeat it.
+
+The for Loop
+
+A for loop repeats a block of code for each item in a sequence. The most common sequence for beginners is range().
+
+    for i in range(3):
+        print(i)
+
+This will output:
+    0
+    1
+    2
+
+The variable i takes each value from the sequence in turn. range(3) produces the values 0, 1, and 2. Notice that it starts at 0 and stops before 3.
+
+Iterating Over a List
+
+You can also use a for loop to go through each item in a list.
+
+    fruits = ["apple", "banana", "cherry"]
+    for fruit in fruits:
+        print(fruit)
+
+This will output:
+    apple
+    banana
+    cherry
+
+The variable fruit takes each value from the list in turn.
+
+The while Loop
+
+A while loop repeats a block of code as long as a condition is True. When the condition becomes False, the loop stops.
+
+    count = 0
+    while count < 3:
+        print(count)
+        count = count + 1
+
+This will output:
+    0
+    1
+    2
+
+It is important to update the variable inside the loop. If count never changes, the condition count < 3 will always be True and the loop will run forever. This is called an infinite loop.
+
+Choosing Between for and while
+
+Use a for loop when you know in advance how many times you want to repeat something, or when you are going through a list or sequence.
+
+Use a while loop when you want to keep repeating something until a condition changes, and you do not know in advance how many repetitions will be needed.
+
+The range() Function
+
+range() generates a sequence of numbers. It has three forms:
+
+    range(stop)              starts at 0, stops before stop
+    range(start, stop)       starts at start, stops before stop
+    range(start, stop, step) counts from start to stop in steps
+
+Examples:
+    range(5)         gives 0, 1, 2, 3, 4
+    range(2, 6)      gives 2, 3, 4, 5
+    range(0, 10, 2)  gives 0, 2, 4, 6, 8
+
+The Accumulator Pattern
+
+A common use of loops is to build up a total. This is called the accumulator pattern.
+
+    numbers = [1, 2, 3, 4, 5]
+    total = 0
+    for number in numbers:
+        total = total + number
+    print(total)
+
+This will output:
+    15
+
+The variable total starts at 0. Each time through the loop, the current number is added to total. After the loop ends, total holds the sum of all the numbers.
+
+A common mistake is to write total = number instead of total = total + number. This replaces total with the current number each time instead of adding to it, so you end up with just the last number in the list.
+
+Counting with a Loop
+
+You can use a loop to count how many items meet a condition.
+
+    scores = [45, 78, 92, 55, 88]
+    passing = 0
+    for score in scores:
+        if score >= 60:
+            passing = passing + 1
+    print(passing)
+
+This will output:
+    3
