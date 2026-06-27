@@ -1,0 +1,120 @@
+Python Common Errors
+
+When Python cannot run your code, it displays an error message. Learning to read these messages is one of the most important skills for a beginner programmer. Each error message tells you what went wrong and on which line.
+
+SyntaxError
+
+A SyntaxError means Python could not understand the structure of your code. It occurs before the program even starts running.
+
+The most common cause is a missing colon at the end of an if, for, while, elif, else, or def statement.
+
+    if x > 5
+        print("x is greater")
+
+This causes:
+    SyntaxError: expected ':'
+
+The fix is to add the missing colon:
+
+    if x > 5:
+        print("x is greater")
+
+Other common causes of SyntaxError include mismatched brackets or parentheses, missing quotation marks around strings, and using = instead of == in a condition.
+
+IndentationError
+
+An IndentationError means the indentation of your code is incorrect. Python uses indentation to group lines of code. If the indentation is inconsistent, Python cannot follow the structure.
+
+    if x > 5:
+    print("x is greater")
+
+This causes:
+    IndentationError: expected an indented block
+
+The fix is to indent the line inside the if block:
+
+    if x > 5:
+        print("x is greater")
+
+NameError
+
+A NameError occurs when you try to use a variable or function name that has not been defined yet.
+
+    print(result)
+
+If result has not been assigned a value before this line, Python will raise:
+    NameError: name 'result' is not defined
+
+The fix is to define the variable before using it:
+
+    result = 42
+    print(result)
+
+TypeError
+
+A TypeError occurs when you try to perform an operation on values of incompatible types.
+
+    age = 25
+    print("I am " + age + " years old")
+
+This causes:
+    TypeError: can only concatenate str (not "int") to str
+
+The fix is to convert the number to a string first using str():
+
+    age = 25
+    print("I am " + str(age) + " years old")
+
+Another common TypeError for beginners is calling a function with the wrong number of arguments.
+
+IndexError
+
+An IndexError occurs when you try to access a position in a list that does not exist.
+
+    fruits = ["apple", "banana", "cherry"]
+    print(fruits[5])
+
+This causes:
+    IndexError: list index out of range
+
+Remember that Python lists start at index 0. A list with three items has valid indices 0, 1, and 2. Accessing index 5 goes beyond the end of the list.
+
+ValueError
+
+A ValueError occurs when you pass a value of the right type but an inappropriate value to a function.
+
+    number = int("hello")
+
+This causes:
+    ValueError: invalid literal for int() with base 10: 'hello'
+
+The string "hello" cannot be converted to an integer. This error often occurs when reading user input and trying to convert it to a number.
+
+ZeroDivisionError
+
+A ZeroDivisionError occurs when you try to divide a number by zero.
+
+    result = 10 / 0
+
+This causes:
+    ZeroDivisionError: division by zero
+
+How to Read an Error Message
+
+When Python displays an error, it shows:
+1. The filename and line number where the error occurred
+2. The line of code that caused the error
+3. The type of error and a short description
+
+For example:
+    File "my_program.py", line 5, in <module>
+        print(fruits[5])
+    IndexError: list index out of range
+
+This tells you to look at line 5 of my_program.py, where the IndexError occurred.
+
+Always read error messages carefully. They are Python telling you exactly what went wrong and where to look.
+
+Refusal and Uncertainty
+
+If a question is outside the scope of introductory Python programming or the available learning materials, the support system may not have enough source evidence to give a reliable answer. In such cases, the system will indicate that it cannot answer safely from its available sources rather than guessing.

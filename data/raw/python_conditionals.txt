@@ -1,0 +1,103 @@
+Python Conditionals
+
+Conditionals allow a program to make decisions. Depending on whether a condition is True or False, the program will follow different paths.
+
+The if Statement
+
+An if statement checks a condition. If the condition is True, the indented block of code below it runs. If the condition is False, the block is skipped.
+
+    x = 10
+    if x > 5:
+        print("x is greater than 5")
+
+This will output:
+    x is greater than 5
+
+The Colon Rule
+
+Every if statement must end with a colon. This is a rule in Python syntax. The colon tells Python that the block of code belonging to the if statement is about to start.
+
+    if x > 5:        (correct: colon at the end)
+    if x > 5         (incorrect: missing colon)
+
+If you forget the colon, Python will raise a SyntaxError. The error message will usually say something like SyntaxError: expected ':'.
+
+The same colon rule applies to for loops, while loops, elif, else, and def statements.
+
+Indentation
+
+The code inside an if statement must be indented. Python uses indentation to know which lines belong to the if block. The standard is four spaces.
+
+    x = 10
+    if x > 5:
+        print("This is inside the if block")
+    print("This is outside the if block")
+
+If x is 10, both print statements will run. But the second print always runs regardless of the condition, because it is not indented inside the if block.
+
+The else Clause
+
+You can add an else clause to run code when the condition is False.
+
+    age = 15
+    if age >= 18:
+        print("You are an adult")
+    else:
+        print("You are not yet an adult")
+
+Because age is 15, which is less than 18, the output will be:
+    You are not yet an adult
+
+The elif Clause
+
+elif stands for else if. It lets you check multiple conditions in sequence.
+
+    score = 72
+    if score >= 90:
+        print("Grade: A")
+    elif score >= 70:
+        print("Grade: B")
+    elif score >= 50:
+        print("Grade: C")
+    else:
+        print("Grade: Fail")
+
+Because score is 72, the output will be:
+    Grade: B
+
+Python checks each condition from top to bottom and runs the first block whose condition is True. Once a match is found, the rest are skipped.
+
+Comparison Operators
+
+These are the operators commonly used in conditions:
+
+    ==    equal to
+    !=    not equal to
+    >     greater than
+    <     less than
+    >=    greater than or equal to
+    <=    less than or equal to
+
+Example:
+    if temperature == 100:
+        print("Water is boiling")
+
+Combining Conditions
+
+You can combine conditions using and and or.
+
+    age = 20
+    has_ticket = True
+    if age >= 18 and has_ticket:
+        print("You may enter")
+
+Both conditions must be True for the message to appear.
+
+Common Mistakes
+
+Forgetting the colon after an if, elif, or else statement is one of the most frequent beginner mistakes. Python will raise a SyntaxError immediately if the colon is missing.
+
+Using = instead of == is another common mistake. A single = assigns a value, while == checks if two values are equal.
+
+    if x = 5:     (wrong: this is assignment, not comparison)
+    if x == 5:    (correct: this checks if x equals 5)
