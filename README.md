@@ -96,3 +96,194 @@ Available local endpoints:
 - Health check: http://127.0.0.1:8000/health
 - Configuration check: http://127.0.0.1:8000/config-check
 - API documentation: http://127.0.0.1:8000/docs
+
+---
+
+## Local Development
+
+### 1. Activate the virtual environment
+
+```bash
+source .venv/bin/activate
+```
+
+### 2. Confirm the local Ollama model
+
+This project uses a local Ollama model for answer generation. The local `.env` file should contain the model name available on the machine.
+
+Example:
+
+```env
+OLLAMA_MODEL=gemma4:e4b-it-qat
+OLLAMA_BASE_URL=http://localhost:11434
+```
+
+Check available local models:
+
+```bash
+ollama list
+```
+
+Check that the Ollama API is running:
+
+```bash
+curl http://localhost:11434/api/tags
+```
+
+If Ollama is not running, start it with:
+
+```bash
+ollama serve
+```
+
+### 3. Start the FastAPI backend
+
+```bash
+uvicorn src.backend.api.main:app --reload
+```
+
+The API documentation will be available at:
+
+```text
+http://127.0.0.1:8000/docs
+```
+
+---
+
+## API Endpoints
+
+### GET `/health`
+
+Checks whether the backend is running.
+
+Example:
+
+```bash
+curl http://127.0.0.1:8000/health
+```
+
+Example response:
+
+```json
+{
+  "status": "ok",
+  "app_name": "RAG Programming Support System",
+  "environment": "development"
+}
+```
+
+---
+
+### POST `/retrieve`
+
+Retrieves relevant source chunks from the ChromaDB vector store for a learner programming question.
+
+Example request:
+
+```bash
+curl -X POST http://127.0.0.1:8000/retrieve \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "What is a variable in Python?",
+    "top_k": 3
+  }'
+```
+
+Example response format:
+
+```json
+{
+  "query": "What is a variable in Python?",
+  "chunks_returned": 3,
+  "results": [
+    {
+      "rank": 1,
+      "chunk_id": "python_variables.txt_chunk_001",
+      "source": "python_variables.txt",
+      "text_preview": "Python Variables...",
+      "distance": 0.2402,
+      "similarity_score": 0.7598
+    }
+  ]
+}
+```
+
+---
+
+### POST `/ask`
+
+Generates a source-grounded answer using retrieved chunks and the local Ollama model.
+
+Example request:
+
+```bash
+curl -X POST http://127.0.0.1:8000/ask \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "What is a variable in Python?",
+    "top_k": 3
+  }'
+```
+
+Example response format:
+
+```json
+{
+  "query": "What is a variable in Python?",
+  "answer_status": "answered",
+  "answer": "A variable in Python is a name used to store a value in a program [S1].",
+  "sources": [
+    {
+      "source_id": "S1",
+      "chunk_id": "python_variables.txt_chunk_001",
+      "source": "python_variables.txt",
+      "similarity_score": 0.7598,
+      "text_preview": "Python Variables..."
+    }
+  ]
+}
+```
+
+---
+
+## Insufficient Evidence Handling
+
+The `/ask` endpoint supports insufficient evidence handling. If retrieved chunks do not meet the required similarity threshold, the system returns an uncertainty response instead of generating an unsupported answer.
+
+Example request:
+
+```bash
+curl -X POST http://127.0.0.1:8000/ask \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "What will be on my final exam?",
+    "top_k": 3,
+    "min_similarity_score": 0.75
+  }'
+```
+
+Example response:
+
+```json
+{
+  "query": "What will be on my final exam?",
+  "answer_status": "insufficient_evidence",
+  "answer": "I do not have enough source evidence to answer this question reliably.",
+  "sources": []
+}
+```
+
+---
+
+## Current Backend Status
+
+The current backend prototype supports:
+
+- Document ingestion and chunking
+- ChromaDB vector storage
+- Retrieval service
+- POST `/retrieve` endpoint
+- Local Ollama answer generation
+- POST `/ask` endpoint
+- Source-grounded answers with citations
+- Insufficient evidence handling
