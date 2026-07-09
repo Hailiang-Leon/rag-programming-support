@@ -13,6 +13,7 @@ from src.backend.rag.generator import (
     generated_answer_to_dict,
 )
 from src.backend.rag.retriever import retrieve_relevant_chunks
+from src.backend.storage.query_log_repository import save_query_log
 
 
 app = FastAPI(
@@ -67,5 +68,12 @@ def ask_question(request: AskRequest) -> AskResponse:
     )
 
     result = generated_answer_to_dict(generated_answer)
+
+    save_query_log(
+        query=result["query"],
+        answer_status=result["answer_status"],
+        answer=result["answer"],
+        sources=result["sources"],
+    )
 
     return AskResponse(**result)
