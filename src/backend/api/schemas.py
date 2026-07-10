@@ -1,3 +1,5 @@
+from typing import Literal
+
 from pydantic import BaseModel, Field
 
 
@@ -5,7 +7,10 @@ class RetrieveRequest(BaseModel):
     query: str = Field(
         ...,
         min_length=1,
-        description="Learner programming question to retrieve relevant source chunks for.",
+        description=(
+            "Learner programming question to retrieve "
+            "relevant source chunks for."
+        ),
     )
     top_k: int | None = Field(
         default=None,
@@ -17,7 +22,9 @@ class RetrieveRequest(BaseModel):
         default=None,
         ge=0.0,
         le=1.0,
-        description="Minimum similarity score required for returned chunks.",
+        description=(
+            "Minimum similarity score required for returned chunks."
+        ),
     )
 
 
@@ -40,19 +47,43 @@ class AskRequest(BaseModel):
     query: str = Field(
         ...,
         min_length=1,
-        description="Learner programming question to answer using source-grounded RAG.",
+        description=(
+            "Learner programming question to answer using "
+            "source-grounded RAG."
+        ),
     )
     top_k: int | None = Field(
         default=None,
         ge=1,
         le=10,
-        description="Maximum number of source chunks to use for answer generation.",
+        description=(
+            "Maximum number of source chunks to use "
+            "for answer generation."
+        ),
     )
     min_similarity_score: float | None = Field(
         default=None,
         ge=0.0,
         le=1.0,
-        description="Minimum similarity score required before generating an answer.",
+        description=(
+            "Minimum similarity score required before "
+            "generating an answer."
+        ),
+    )
+    response_mode: Literal["auto", "answer", "hint"] = Field(
+        default="auto",
+        description=(
+            "Response mode. Auto detects natural-language "
+            "hint requests."
+        ),
+    )
+    hint_level: int = Field(
+        default=1,
+        ge=1,
+        le=3,
+        description=(
+            "Hint detail level used when response_mode resolves to hint."
+        ),
     )
 
 

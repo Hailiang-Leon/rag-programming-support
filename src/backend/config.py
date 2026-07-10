@@ -13,6 +13,10 @@ class Settings:
 
     ollama_base_url: str = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
     ollama_model: str = os.getenv("OLLAMA_MODEL", "llama3.1")
+    ollama_timeout_seconds: float = float(os.getenv("OLLAMA_TIMEOUT_SECONDS", "300"))
+    ollama_num_predict: int = int(os.getenv("OLLAMA_NUM_PREDICT", "256"))
+    ollama_think: bool = os.getenv("OLLAMA_THINK", "false").lower() in {"1", "true", "yes", "on"}
+    ollama_keep_alive: str = os.getenv("OLLAMA_KEEP_ALIVE", "10m")
 
     vector_db_path: str = os.getenv("VECTOR_DB_PATH", "./data/processed/chroma_db")
     collection_name: str = os.getenv("COLLECTION_NAME", "programming_sources")
