@@ -113,7 +113,7 @@ This project uses a local Ollama model for answer generation. Set `OLLAMA_MODEL`
 Example:
 
 ```env
-OLLAMA_MODEL=qwen3:4b-thinking
+OLLAMA_MODEL=qwen3:4b-instruct
 OLLAMA_BASE_URL=http://localhost:11434
 ```
 

@@ -68,6 +68,8 @@ def ask_question(request: AskRequest) -> AskResponse:
         query=request.query,
         top_k=request.top_k,
         min_similarity_score=request.min_similarity_score,
+        response_mode=request.response_mode,
+        hint_level=request.hint_level,
     )
 
     result = generated_answer_to_dict(generated_answer)

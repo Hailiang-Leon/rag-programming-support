@@ -67,6 +67,8 @@ def test_ask_endpoint_returns_answered_response(monkeypatch):
         query,
         top_k=None,
         min_similarity_score=None,
+        response_mode="auto",
+        hint_level=1,
     ):
         assert query == "What is a variable in Python?"
         assert top_k == 3
@@ -125,6 +127,8 @@ def test_ask_endpoint_returns_insufficient_evidence_response(monkeypatch):
         query,
         top_k=None,
         min_similarity_score=None,
+        response_mode="auto",
+        hint_level=1,
     ):
         assert query == "What will be on my final exam?"
         assert top_k == 3
@@ -175,6 +179,87 @@ def test_ask_endpoint_rejects_empty_query():
         json={
             "query": "",
             "top_k": 3,
+        },
+    )
+
+    assert response.status_code == 422
+
+
+def test_ask_endpoint_forwards_hint_parameters(monkeypatch):
+    fake_generated_answer = object()
+    captured = {}
+
+    def fake_generate_source_grounded_answer(
+        query,
+        top_k=None,
+        min_similarity_score=None,
+        response_mode="auto",
+        hint_level=1,
+    ):
+        captured["query"] = query
+        captured["response_mode"] = response_mode
+        captured["hint_level"] = hint_level
+        return fake_generated_answer
+
+    def fake_generated_answer_to_dict(generated_answer):
+        assert generated_answer is fake_generated_answer
+
+        return {
+            "query": "Give me a hint for summing a list.",
+            "answer_status": "hint",
+            "answer": "Think about a running total [S1].",
+            "sources": [
+                {
+                    "source_id": "S1",
+                    "chunk_id": "python_loops.txt_chunk_001",
+                    "source": "python_loops.txt",
+                    "similarity_score": 0.80,
+                    "text_preview": "Accumulator pattern...",
+                }
+            ],
+        }
+
+    monkeypatch.setattr(
+        api_main,
+        "generate_source_grounded_answer",
+        fake_generate_source_grounded_answer,
+    )
+
+    monkeypatch.setattr(
+        api_main,
+        "generated_answer_to_dict",
+        fake_generated_answer_to_dict,
+    )
+
+    if hasattr(api_main, "save_query_log"):
+        monkeypatch.setattr(
+            api_main,
+            "save_query_log",
+            lambda **kwargs: 1,
+        )
+
+    response = client.post(
+        "/ask",
+        json={
+            "query": "Give me a hint for summing a list.",
+            "top_k": 3,
+            "response_mode": "hint",
+            "hint_level": 2,
+        },
+    )
+
+    assert response.status_code == 200
+    assert captured["response_mode"] == "hint"
+    assert captured["hint_level"] == 2
+    assert response.json()["answer_status"] == "hint"
+
+
+def test_ask_endpoint_rejects_invalid_response_mode():
+    response = client.post(
+        "/ask",
+        json={
+            "query": "What is a variable?",
+            "response_mode": "unsupported_mode",
         },
     )
 

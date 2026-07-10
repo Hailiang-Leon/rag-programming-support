@@ -59,7 +59,8 @@ h1 {
 }
 
 textarea,
-input {
+input,
+select {
   width: 100%;
   border: 1px solid #cbd5e8;
   border-radius: 12px;
@@ -70,7 +71,8 @@ input {
 }
 
 textarea:focus,
-input:focus {
+input:focus,
+select:focus {
   outline: 3px solid rgba(52, 87, 213, 0.18);
   border-color: #3457d5;
 }
@@ -224,3 +226,21 @@ button:disabled {
     flex-direction: column;
   }
 }
+
+.help-text {
+  margin: 14px 0 0;
+  color: #65738a;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.status-badge.hint {
+  background: #e9efff;
+  color: #2942a3;
+}
+
+.status-badge.out-of-scope {
+  background: #fdecec;
+  color: #9b2c2c;
+}
+

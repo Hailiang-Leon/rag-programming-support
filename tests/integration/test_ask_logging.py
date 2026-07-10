@@ -14,6 +14,8 @@ def test_ask_endpoint_saves_query_log(monkeypatch):
         query,
         top_k=None,
         min_similarity_score=None,
+        response_mode="auto",
+        hint_level=1,
     ):
         assert query == "What is a variable in Python?"
         assert top_k == 3
