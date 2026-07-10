@@ -1,3 +1,6 @@
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+from pathlib import Path
 from fastapi import FastAPI
 
 from src.backend.api.schemas import (
@@ -77,3 +80,14 @@ def ask_question(request: AskRequest) -> AskResponse:
     )
 
     return AskResponse(**result)
+
+# Frontend static file serving
+FRONTEND_DIR = Path(__file__).resolve().parents[2] / "frontend"
+
+if FRONTEND_DIR.exists():
+    app.mount("/static", StaticFiles(directory=FRONTEND_DIR), name="static")
+
+
+@app.get("/", include_in_schema=False)
+def serve_frontend():
+    return FileResponse(FRONTEND_DIR / "index.html")
