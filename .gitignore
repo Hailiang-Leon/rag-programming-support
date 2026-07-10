@@ -41,3 +41,7 @@ build/
 
 # Jupyter
 .ipynb_checkpoints/
+
+# Technical evaluation evidence
+!data/evaluation/technical_evaluation_raw.json
+!data/evaluation/technical_evaluation_scores.csv
