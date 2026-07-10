@@ -17,9 +17,9 @@ The system is designed to support novice learners by providing citation-supporte
 - Vector-based document retrieval
 - RAG-based answer generation
 - Citation-supported explanations
-- Staged hint generation
+- Learner-facing web interface with citation and source evidence display
 - Uncertainty and refusal handling when source evidence is insufficient
-- Query, retrieval, answer, and feedback logging for evaluation
+- Persistent query, answer status, generated answer, and retrieved source metadata logging using SQLite
 
 ## Planned Technology Stack
 
@@ -74,7 +74,7 @@ The system will be evaluated using technical and learner-facing criteria, includ
 
 ## Status
 
-Initial project structure created.
+Core RAG prototype completed. The system currently includes document ingestion, ChromaDB retrieval, source-grounded answer generation, citation display, SQLite logging, a learner-facing frontend, automated tests, and a baseline technical evaluation.
 
 ## Running the Backend API
 
@@ -94,7 +94,6 @@ Available local endpoints:
 
 - Root endpoint: http://127.0.0.1:8000/
 - Health check: http://127.0.0.1:8000/health
-- Configuration check: http://127.0.0.1:8000/config-check
 - API documentation: http://127.0.0.1:8000/docs
 
 ---
@@ -109,12 +108,12 @@ source .venv/bin/activate
 
 ### 2. Confirm the local Ollama model
 
-This project uses a local Ollama model for answer generation. The local `.env` file should contain the model name available on the machine.
+This project uses a local Ollama model for answer generation. Set `OLLAMA_MODEL` to a model installed on the local machine. The current baseline technical evaluation used `qwen3:4b-thinking`.
 
 Example:
 
 ```env
-OLLAMA_MODEL=gemma4:e4b-it-qat
+OLLAMA_MODEL=qwen3:4b-thinking
 OLLAMA_BASE_URL=http://localhost:11434
 ```
 
@@ -275,15 +274,24 @@ Example response:
 
 ---
 
-## Current Backend Status
+## Current Project Status
 
-The current backend prototype supports:
+The current software prototype supports:
 
 - Document ingestion and chunking
-- ChromaDB vector storage
-- Retrieval service
+- Sentence-transformer embeddings
+- ChromaDB vector storage and retrieval
 - POST `/retrieve` endpoint
-- Local Ollama answer generation
+- Local Ollama source-grounded answer generation
 - POST `/ask` endpoint
-- Source-grounded answers with citations
-- Insufficient evidence handling
+- Citation markers and retrieved source evidence
+- Insufficient-evidence handling
+- Learner-facing HTML, CSS, and JavaScript frontend
+- Citation badges and source cards in the frontend
+- Persistent SQLite query and answer logging
+- Automated unit and integration tests
+- A completed 12-question baseline technical evaluation
+
+The baseline evaluation achieved a 10/12 overall pass result, with an
+83.3% pass rate. Current improvement work focuses on true staged hint
+delivery, scope-aware refusal, response quality, and final evaluation.
