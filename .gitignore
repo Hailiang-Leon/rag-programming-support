@@ -45,3 +45,10 @@ build/
 # Technical evaluation evidence
 !data/evaluation/technical_evaluation_raw.json
 !data/evaluation/technical_evaluation_scores.csv
+
+# Formal technical evaluation results
+!data/evaluation/technical_evaluation_baseline_raw.json
+!data/evaluation/technical_evaluation_baseline_rescored.csv
+!data/evaluation/technical_evaluation_final_raw.json
+!data/evaluation/technical_evaluation_final_scores.csv
+!data/evaluation/technical_evaluation_comparison.csv

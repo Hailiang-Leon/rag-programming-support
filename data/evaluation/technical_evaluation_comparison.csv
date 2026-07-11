@@ -1,0 +1,13 @@
+﻿question_id,category,baseline_answer_status,final_answer_status,baseline_overall_pass,final_overall_pass,pass_change,baseline_latency_seconds,final_latency_seconds,latency_change_seconds,baseline_retrieval_relevance_0_2,final_retrieval_relevance_0_2,baseline_answer_faithfulness_0_2,final_answer_faithfulness_0_2,baseline_citation_accuracy_0_2,final_citation_accuracy_0_2,baseline_novice_readability_0_2,final_novice_readability_0_2,baseline_refusal_appropriateness_0_2_or_na,final_refusal_appropriateness_0_2_or_na,baseline_staged_hint_quality_0_2_or_na,final_staged_hint_quality_0_2_or_na
+Q001,concept_explanation,answered,answered,Yes,Yes,Yes -> Yes,77.13,43.55,-33.58,2,2,1,1,1,1,2,1,N/A,N/A,N/A,N/A
+Q002,concept_explanation,answered,answered,Yes,Yes,Yes -> Yes,79.95,34.09,-45.86,2,2,2,2,2,1,2,1,N/A,N/A,N/A,N/A
+Q003,code_understanding,answered,answered,Yes,Yes,Yes -> Yes,76.85,31.93,-44.92,2,2,2,2,1,1,2,2,N/A,N/A,N/A,N/A
+Q004,debugging,answered,answered,Yes,Yes,Yes -> Yes,95.77,32.39,-63.38,2,2,1,2,1,2,2,2,N/A,N/A,N/A,N/A
+Q005,error_message,answered,answered,Yes,Yes,Yes -> Yes,102.73,36.06,-66.67,2,2,1,1,1,1,1,2,N/A,N/A,N/A,N/A
+Q006,debugging,answered,answered,Yes,Yes,Yes -> Yes,80.89,35.46,-45.43,1,1,1,1,0,0,2,1,N/A,N/A,N/A,N/A
+Q007,staged_hint,answered,hint,No,Yes,No -> Yes,94.61,21.07,-73.54,2,2,2,2,1,0,2,2,N/A,N/A,0,2
+Q008,concept_explanation,answered,answered,Yes,Yes,Yes -> Yes,75.62,35.52,-40.10,2,2,2,2,2,1,2,1,N/A,N/A,N/A,N/A
+Q009,code_understanding,answered,answered,Yes,Yes,Yes -> Yes,63.09,27.91,-35.18,1,2,2,2,2,2,2,2,N/A,N/A,N/A,N/A
+Q010,misconception,answered,answered,Yes,Yes,Yes -> Yes,55.54,34.65,-20.89,2,2,2,2,1,1,2,2,N/A,N/A,N/A,N/A
+Q011,unsupported_question,insufficient_evidence,insufficient_evidence,Yes,Yes,Yes -> Yes,14.91,14.97,0.06,N/A,N/A,2,2,N/A,N/A,2,2,2,2,N/A,N/A
+Q012,out_of_scope,insufficient_evidence,out_of_scope,No,Yes,No -> Yes,12.35,0.00,-12.35,N/A,N/A,2,2,N/A,N/A,2,2,1,2,N/A,N/A

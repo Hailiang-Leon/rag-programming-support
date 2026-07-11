@@ -295,3 +295,27 @@ The current software prototype supports:
 The baseline evaluation achieved a 10/12 overall pass result, with an
 83.3% pass rate. Current improvement work focuses on true staged hint
 delivery, scope-aware refusal, response quality, and final evaluation.
+
+## Final Technical Evaluation
+
+The optimized system was evaluated using the same 12-question technical
+evaluation set as the baseline system.
+
+- Baseline behavioural pass rate: **10/12 (83.3%)**
+- Final behavioural pass rate: **12/12 (100.0%)**
+- Baseline average recorded latency: **69.12 seconds**
+- Final average recorded latency: **28.97 seconds**
+- Staged hint quality improved from **0% to 100%**
+- Refusal appropriateness improved from **75% to 100%**
+
+The baseline used `qwen3:4b-thinking`, while the optimized configuration
+used `qwen3:4b-instruct` together with deterministic level-1 hints,
+scope-aware refusal, and updated runtime settings.
+
+Remaining limitations include citation-source alignment, retrieval ranking,
+responses reaching the configured output-token limit, and local runtime
+performance.
+
+See the
+[Final Technical Evaluation Summary](docs/evaluation/final_technical_evaluation_summary.md)
+for the complete results and interpretation.

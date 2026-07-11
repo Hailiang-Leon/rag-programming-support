@@ -1,0 +1,105 @@
+﻿question_id,category,difficulty,question,expected_retrieval_topics,expected_behavior,evaluation_focus,answer_status,latency_seconds,source_count,citation_count,citation_markers,retrieved_sources,answer,error,retrieval_relevance_0_2,answer_faithfulness_0_2,citation_accuracy_0_2,novice_readability_0_2,refusal_appropriateness_0_2_or_na,staged_hint_quality_0_2_or_na,overall_pass_yes_no,evaluator_notes
+Q001,concept_explanation,beginner,What is a variable in Python?,variables | assignment | Python basics,The system should explain variables in beginner-friendly language and cite relevant introductory programming material.,retrieval_relevance | citation_accuracy | novice_readability,answered,77.13,3,2,[S1] | [S2],S1:python_variables.txt:0.7598 | S2:python_variables.txt:0.5927 | S3:python_functions.txt:0.5582,"A variable in Python is a name that stores a value in your program. When you create a variable, Python sets aside a space in memory to hold that value, and you can later use the variable name to access or change the value [S1].
+
+To create a variable, you write the variable name followed by an equals sign (`=`) and the value you want to store. For example:
+`name = ""Alice""`
+`age = 25`
+`score = 98.5`
+
+The equals sign here does **not** mean ""the two sides are equal."" Instead, it means: *take the value on the right and store it in the variable on the left* [S1].
+
+Python automatically handles the type of value you store (like text, whole numbers, or decimals) without you needing to declare it yourself [S2]. For example:
+- `""Alice""` is text (`str`)
+- `25` is a whole number (`int`)
+- `98.5` is a decimal (`float`)
+
+Variables follow simple naming rules: they can contain letters, numbers, and underscores, but **must start with a letter or underscore** [S1].",,2,1,1,2,N/A,N/A,Yes,"Direct variable sources were retrieved and the explanation was clear. Some claims, particularly automatic type handling, were not clearly supported by the cited source preview."
+Q002,concept_explanation,beginner,What is the difference between a for loop and a while loop?,loops | for loop | while loop | iteration,"The system should compare for loops and while loops clearly, using retrieved source material.",retrieval_relevance | answer_faithfulness | citation_accuracy,answered,79.95,3,2,[S1] | [S2],S1:python_loops.txt:0.5862 | S2:python_loops.txt:0.4877 | S3:python_loops.txt:0.4264,"The difference between a for loop and a while loop in Python is about **when you know how many times to repeat the loop**:
+
+- A **for loop** is used when you know in advance how many times you want to repeat something (like a fixed number of iterations) or when you're going through a list or sequence [S1]. For example, if you have a list of fruits, a for loop goes through each item one by one.
+
+- A **while loop** is used when you want to keep repeating something until a condition changes (like checking if a value reaches a limit), and you don't know how many times you'll need to repeat it in advance [S1][S2]. For example, counting up to a number while checking if you've reached the limit.
+
+In simple terms:
+Use a **for loop** for *known sequences* (like lists or fixed counts).
+Use a **while loop** for *changing conditions* where you don't know how many times the loop will run.",,2,2,2,2,N/A,N/A,Yes,Relevant loop sources directly supported the accurate and beginner-friendly comparison of for and while loops.
+Q003,code_understanding,beginner,"What does this code do?
+
+for i in range(3):
+    print(i)",for loop | range | print | iteration,"The system should explain that the code prints 0, 1, and 2, and should explain why range(3) stops before 3.",answer_faithfulness | novice_readability | citation_accuracy,answered,76.85,3,2,[S2] | [S1],S1:python_loops.txt:0.5866 | S2:python_loops.txt:0.5375 | S3:python_functions.txt:0.5059,"This code prints the numbers 0, 1, and 2, each on a new line. Here's why:
+
+The `for` loop runs exactly 3 times because `range(3)` generates a sequence of numbers starting at 0 and stopping before 3 (so it includes 0, 1, and 2) [S2]. During each iteration, the loop prints the current value of `i` (which takes each number from the sequence in turn) [S1].
+
+This is a common way to repeat code a known number of times (in this case, 3 times), which is why we use a `for` loop here instead of a `while` loop [S1].",,2,2,1,2,N/A,N/A,Yes,"Correctly explained that range(3) produces 0, 1, and 2. The range citation was accurate, but some S1 citation use was less direct."
+Q004,debugging,beginner,"Why does this code not work?
+
+x = 5
+if x > 3
+    print(""x is greater than 3"")",if statements | syntax error | colon | Python conditionals,The system should identify the missing colon after the if condition and explain the corrected version.,retrieval_relevance | answer_faithfulness | debugging_support,answered,95.77,3,3,[S1] | [S2] | [S3],S1:python_errors.txt:0.6523 | S2:python_conditionals.txt:0.614 | S3:python_conditionals.txt:0.571,"The code doesn't work because there's a missing colon after the `if` statement. Python requires a colon (`:`) at the end of an `if` condition to tell the program where the code block starts. Without it, Python raises a `SyntaxError` with the message ""expected ':'"" [S1].
+
+This is a common beginner mistake, as explained in the sources: every `if` statement must end with a colon (e.g., `if x > 3:` is correct, but `if x > 3` without the colon is incorrect) [S2]. The error happens immediately when Python checks the code structure, so the program never reaches the `print` statement [S3].
+
+For example, your code would cause this error because the line `if x > 3` is missing the colon that Python needs to recognize the start of the code block [S2].",,2,1,1,2,N/A,N/A,Yes,"Correctly identified the missing colon and explained the SyntaxError. It did not provide the complete corrected code, and S3 did not clearly support the associated claim."
+Q005,error_message,beginner,What does SyntaxError: expected ':' mean in Python?,SyntaxError | colon | if statement | for loop | while loop | function definition,"The system should explain that Python expected a colon after a statement header such as if, for, while, or def.",retrieval_relevance | citation_accuracy | answer_faithfulness,answered,102.73,3,2,[S1] | [S3],S1:python_errors.txt:0.6547 | S2:python_errors.txt:0.5903 | S3:python_conditionals.txt:0.5899,"The error message **""SyntaxError: expected :'""** in Python means that Python is missing a colon (`:`) at the end of a conditional statement (like `if`, `for`, `while`, `def`, or `elif`). This happens because Python requires a colon to tell where the code block for the condition starts [S1].
+
+For example, if you write:
+```python
+if x > 5
+print(""x is greater"")
+```
+Python will raise this error because there’s no colon after `if x > 5` [S1]. The fix is to add the colon:
+```python
+if x > 5:
+print(""x is greater"")
+```
+
+This rule applies to all conditional statements in Python—every `if` statement must end with a colon [S3]. Forgetting the colon is the most common cause of this specific error for beginners.",,2,1,1,1,N/A,N/A,Yes,"The core missing-colon explanation was correct. However, def was incorrectly described as a conditional statement, the corrected print line was not indented, and citations did not clearly support every listed statement type."
+Q006,debugging,beginner,"Why does this code print the wrong result?
+
+numbers = [1, 2, 3]
+total = 0
+for number in numbers:
+    total = number
+print(total)",loops | accumulator pattern | assignment | lists,"The system should explain that total is being overwritten instead of accumulated, and should suggest total = total + number.",debugging_support | answer_faithfulness | novice_readability,answered,80.89,3,1,[S1],S1:python_loops.txt:0.5646 | S2:python_variables.txt:0.5614 | S3:python_lists.txt:0.5504,"The code prints the wrong result because it doesn't use the **accumulator pattern** correctly. In this code, the loop overwrites `total` with each number in the list (so it ends up being the last number, 3), instead of adding all numbers together.
+
+The accumulator pattern builds a total by *adding* each number to a running total, as shown in [S1]:
+`total = total + number` in each loop iteration.
+But your code does `total = number` (overwriting the value), so it only keeps the last number. This is a common beginner mistake when trying to sum values with a loop [S1].
+
+**Why it's wrong**:
+The code expects to print the sum of `[1, 2, 3]` (which is 6), but it prints `3` because the loop only stores the final number. To fix it, you need to add each number to `total` (like the example in [S1]).",,1,1,0,2,N/A,N/A,Yes,"The overwrite problem and accumulator fix were correct and clearly explained. However, the strongest accumulator chunk was not retrieved, and S1 did not directly support the cited accumulator claim."
+Q007,staged_hint,beginner,"I need help writing a loop to calculate the sum of numbers in a list, but do not give me the full answer immediately.",loops | lists | accumulator pattern | sum,The system should provide staged hints instead of immediately giving a complete solution.,staged_hint_quality | novice_readability | learning_support,answered,94.61,3,2,[S1] | [S2],S1:python_loops.txt:0.5699 | S2:python_loops.txt:0.5438 | S3:python_loops.txt:0.4448,"To calculate the sum of numbers in a list using a loop, you can use the **accumulator pattern** [S1]. Here's how to think about it step by step:
+
+1. Start by creating a variable called `total` and set it to `0` (this is where you'll build up the sum).
+2. Use a loop to go through each number in your list (e.g., `for number in numbers`).
+3. In each loop iteration, add the current `number` to `total` (so `total = total + number`).
+
+A common mistake to avoid is writing `total = number` instead of `total = total + number`—this would only keep the last number in the list, not the sum [S2].
+
+This approach works because you start with `0` and add each number one by one, building the total step by step. Try this with your list and see how it works!",,2,2,1,2,N/A,0,No,"The content was accurate and S2 supported the accumulator explanation, but S1 was not the most appropriate citation. The response revealed every step and the exact accumulator expression instead of providing a staged hint."
+Q008,concept_explanation,beginner,What is a function in programming and why would I use one?,functions | parameters | return values | code reuse,The system should explain functions as reusable blocks of code and cite relevant beginner material.,retrieval_relevance | citation_accuracy | novice_readability,answered,75.62,3,1,[S1],S1:python_functions.txt:0.572 | S2:python_functions.txt:0.5347 | S3:python_functions.txt:0.4561,"A function in Python is a reusable block of code that performs a specific task. [S1] You use functions to make your programs easier to read, easier to maintain, and easier to test. [S1] This is because if you need to change how a task works, you only update it in one place (inside the function) instead of searching through your entire code to fix the same logic everywhere. [S1]",,2,2,2,2,N/A,N/A,Yes,"Direct function sources supported the concise, accurate, and beginner-friendly explanation."
+Q009,code_understanding,beginner,"What is the output of this code?
+
+name = ""Ana""
+print(""Hello "" + name)",strings | print | string concatenation | variables,The system should explain that the output is Hello Ana and briefly explain string concatenation.,answer_faithfulness | novice_readability | citation_accuracy,answered,63.09,3,1,[S2],S1:python_functions.txt:0.4856 | S2:python_variables.txt:0.4438 | S3:python_variables.txt:0.4413,"The output of the code is **""Hello Ana""**.
+
+Here's why:
+In Python, when you create a variable like `name = ""Ana""`, it stores the text `""Ana""` in that variable [S2]. Then, when you use `print(""Hello "" + name)`, Python combines the string `""Hello ""` with the value of `name` (which is `""Ana""`) using **string concatenation** [S2]. This creates the new string `""Hello Ana""`, which gets printed.
+
+This matches the example in [S2] where `print(""Hello "" + name)` outputs `""Hello Alice""` when `name` is `""Alice""`. Since the code uses `""Ana""` instead of `""Alice""`, the output becomes `""Hello Ana""`.
+
+No other sources are needed for this explanation.",,1,2,2,2,N/A,N/A,Yes,The output and string-concatenation explanation were correct and accurately cited. The top-ranked function source was not the best retrieval match.
+Q010,misconception,beginner,Does Python start counting list positions from 1?,lists | indexing | zero-based indexing,The system should correct the misconception and explain that Python list indexing starts at 0.,answer_faithfulness | citation_accuracy | misconception_handling,answered,55.54,3,3,[S2] | [S3] | [S1],S1:python_lists.txt:0.6107 | S2:python_lists.txt:0.4836 | S3:python_lists.txt:0.4827,"No, Python does **not** start counting list positions from 1. It starts counting from **0** (this is called *zero-based indexing*).
+
+For example, in a list like `[""apple"", ""banana"", ""cherry""]`:
+- The first item (`""apple""`) is at **index 0**.
+- The second item (`""banana""`) is at **index 1**.
+- The third item (`""cherry""`) is at **index 2**.
+
+This is a common misconception for beginners, but Python always uses zero-based indexing [S2]. If you tried to access index 1 as the ""first position"" (like counting from 1), you’d get confused because Python’s first item is *always* at index 0 [S3].
+
+Trying to access an index that doesn’t exist (like index 3 in a list with 3 items) will cause an error called `IndexError`, which happens because Python’s last valid index is always `length - 1` [S1].
+
+So, Python lists start counting from **0**, not 1.",,2,2,1,2,N/A,N/A,Yes,"Correctly corrected the misconception and explained zero-based indexing. S3 and S1 directly supported the explanation, but the initial citation to S2 was less precise."
+Q011,unsupported_question,beginner,What will be on my final programming exam?,assessment policy | course policy,"If no approved source is available, the system should avoid guessing and provide an uncertainty or refusal message.",refusal_appropriateness | unsupported_claim_reduction | trust_calibration,insufficient_evidence,14.91,0,0,,,I do not have enough source evidence to answer this question reliably.,,N/A,2,N/A,2,2,N/A,Yes,Correctly returned insufficient_evidence and avoided guessing about unsupported exam content. Retrieval and citation scoring are not applicable because no source evidence was available.
+Q012,out_of_scope,beginner,Can you give me medical advice about a headache?,out of scope,The system should identify that the question is outside introductory programming support and refuse or redirect appropriately.,refusal_appropriateness | scope_control | unsupported_claim_reduction,insufficient_evidence,12.35,0,0,,,I do not have enough source evidence to answer this question reliably.,,N/A,2,N/A,2,1,N/A,No,"The response safely avoided providing medical advice, but it did not explicitly identify the request as outside programming support or redirect the user appropriately. Retrieval and citation scoring are not applicable."
