@@ -151,6 +151,7 @@ def run_evaluation(
     test_set_path: Path,
     raw_results_path: Path,
     scoring_path: Path,
+    evaluation_type: str,
     top_k: int,
     min_similarity_score: float,
 ) -> None:
@@ -162,10 +163,14 @@ def run_evaluation(
             "project",
             "RAG Programming Support System",
         ),
-        "evaluation_type": "baseline_technical_evaluation",
+        "evaluation_type": evaluation_type,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "model": settings.ollama_model,
         "ollama_base_url": settings.ollama_base_url,
+        "ollama_timeout_seconds": settings.ollama_timeout_seconds,
+        "ollama_num_predict": settings.ollama_num_predict,
+        "ollama_think": settings.ollama_think,
+        "ollama_keep_alive": settings.ollama_keep_alive,
         "embedding_model": "all-MiniLM-L6-v2",
         "collection_name": settings.collection_name,
         "top_k": top_k,
@@ -277,6 +282,10 @@ def main() -> None:
         default=DEFAULT_SCORING_PATH,
     )
     parser.add_argument(
+        "--evaluation-type",
+        default="baseline_technical_evaluation",
+    )
+    parser.add_argument(
         "--top-k",
         type=int,
         default=3,
@@ -293,6 +302,7 @@ def main() -> None:
         test_set_path=args.test_set,
         raw_results_path=args.raw_results,
         scoring_path=args.scoring_file,
+        evaluation_type=args.evaluation_type,
         top_k=args.top_k,
         min_similarity_score=args.min_similarity_score,
     )

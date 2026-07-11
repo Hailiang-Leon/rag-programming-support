@@ -1,0 +1,571 @@
+{
+  "metadata": {
+    "project": "RAG Programming Support System",
+    "evaluation_type": "final_technical_evaluation",
+    "generated_at": "2026-07-11T06:56:33.360490+00:00",
+    "model": "qwen3:4b-instruct",
+    "ollama_base_url": "http://localhost:11434",
+    "ollama_timeout_seconds": 300.0,
+    "ollama_num_predict": 256,
+    "ollama_think": false,
+    "ollama_keep_alive": "10m",
+    "embedding_model": "all-MiniLM-L6-v2",
+    "collection_name": "programming_sources",
+    "top_k": 3,
+    "min_similarity_score": 0.35,
+    "question_count": 12
+  },
+  "results": [
+    {
+      "question_data": {
+        "id": "Q001",
+        "category": "concept_explanation",
+        "difficulty": "beginner",
+        "question": "What is a variable in Python?",
+        "expected_retrieval_topics": [
+          "variables",
+          "assignment",
+          "Python basics"
+        ],
+        "expected_behavior": "The system should explain variables in beginner-friendly language and cite relevant introductory programming material.",
+        "evaluation_focus": [
+          "retrieval_relevance",
+          "citation_accuracy",
+          "novice_readability"
+        ]
+      },
+      "generated_result": {
+        "query": "What is a variable in Python?",
+        "answer_status": "answered",
+        "answer": "A variable in Python is a name that stores a value in a program. When you create a variable, Python reserves a space in memory to hold that value, and you can later use the variable name to access or change the value [S1].\n\nTo create a variable, you write the variable name, followed by an equals sign (=), and then the value you want to store. For example:\n\n```\nname = \"Alice\"\nage = 25\nscore = 98.5\n```\n\nIn this example:\n- `name` stores the text \"Alice\",\n- `age` stores the whole number 25,\n- `score` stores the decimal number 98.5.\n\nThe equals sign here does not mean the two sides are equal. Instead, it means: take the value on the right and store it in the variable on the left [S1].\n\nPython automatically determines the type of the value (like text, whole number, or decimal) based on what you store. You do not need to declare the type yourself [S2].\n\nVariable names can include letters, numbers, and underscores, but they must start with a letter or an underscore [S1].\n\nYou can view the value of a variable using the `print()` function",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "python_variables.txt_chunk_001",
+            "source": "python_variables.txt",
+            "similarity_score": 0.7598,
+            "text_preview": "Python Variables\nA variable is a name that stores a value in a program. When you create a variable, Python sets aside a space in memory to hold that value. You can then use the variable name to access or change the value later.\nCreating a Variable\nIn Python, you create a variable by writing the vari"
+          },
+          {
+            "source_id": "S2",
+            "chunk_id": "python_variables.txt_chunk_003",
+            "source": "python_variables.txt",
+            "similarity_score": 0.5927,
+            "text_preview": "ing a Variable\nYou can display the value of a variable using print().\nname = \"Alice\"\nprint(name)\nThis will output:\nAlice\nYou can also print text and a variable together using string concatenation or an f-string.\nname = \"Alice\"\nprint(\"Hello \" + name)\nprint(f\"Hello {name}\")\nBoth of these will output:\n"
+          },
+          {
+            "source_id": "S3",
+            "chunk_id": "python_functions.txt_chunk_002",
+            "source": "python_functions.txt",
+            "similarity_score": 0.5582,
+            "text_preview": "!\")\nThis defines a function called greet. The function does not run yet. It is just being defined.\nCalling a Function\nTo run a function, you call it by writing its name followed by parentheses.\ngreet()\nThis will output:\nHello, learner!\nYou can call the same function as many times as you like.\ngreet("
+          }
+        ]
+      },
+      "latency_seconds": 43.55,
+      "error": ""
+    },
+    {
+      "question_data": {
+        "id": "Q002",
+        "category": "concept_explanation",
+        "difficulty": "beginner",
+        "question": "What is the difference between a for loop and a while loop?",
+        "expected_retrieval_topics": [
+          "loops",
+          "for loop",
+          "while loop",
+          "iteration"
+        ],
+        "expected_behavior": "The system should compare for loops and while loops clearly, using retrieved source material.",
+        "evaluation_focus": [
+          "retrieval_relevance",
+          "answer_faithfulness",
+          "citation_accuracy"
+        ]
+      },
+      "generated_result": {
+        "query": "What is the difference between a for loop and a while loop?",
+        "answer_status": "answered",
+        "answer": "A **for loop** and a **while loop** are both used to repeat code in Python, but they work in different ways.\n\nA **for loop** is used when you know in advance how many times you want to repeat something or when you are going through a list or sequence [S1]. For example, if you want to print numbers from 0 to 2, you can use a for loop with `range(3)` because you know exactly how many times it should run:\n\n```python\nfor i in range(3):\n    print(i)\n```\n\nThis will output:\n```\n0\n1\n2\n```\n\nThe variable `i` takes each value from the sequence `range(3)` one by one [S3].\n\nA **while loop** is used when you want to repeat something until a condition becomes false, and you don’t know in advance how many times the loop will run [S1]. For example, if you want to print numbers from 0 to 2, but only while a condition is true, you can use a while loop:\n\n```python\ncount = 0\nwhile count < 3:\n    print(count)\n    count = count + 1\n```\n\nThis will output:\n```\n0",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "python_loops.txt_chunk_002",
+            "source": "python_loops.txt",
+            "similarity_score": 0.5862,
+            "text_preview": ":\nprint(fruit)\nThis will output:\napple\nbanana\ncherry\nThe variable fruit takes each value from the list in turn.\nThe while Loop\nA while loop repeats a block of code as long as a condition is True. When the condition becomes False, the loop stops.\ncount = 0\nwhile count < 3:\nprint(count)\ncount = count "
+          },
+          {
+            "source_id": "S2",
+            "chunk_id": "python_loops.txt_chunk_003",
+            "source": "python_loops.txt",
+            "similarity_score": 0.4877,
+            "text_preview": ".\nUse a while loop when you want to keep repeating something until a condition changes, and you do not know in advance how many repetitions will be needed.\nThe range() Function\nrange() generates a sequence of numbers. It has three forms:\nrange(stop)              starts at 0, stops before stop\nrange("
+          },
+          {
+            "source_id": "S3",
+            "chunk_id": "python_loops.txt_chunk_001",
+            "source": "python_loops.txt",
+            "similarity_score": 0.4264,
+            "text_preview": "Python Loops\nLoops allow a program to repeat a block of code multiple times. Instead of writing the same instruction over and over, you write it once inside a loop and tell Python how many times to repeat it.\nThe for Loop\nA for loop repeats a block of code for each item in a sequence. The most commo"
+          }
+        ]
+      },
+      "latency_seconds": 34.09,
+      "error": ""
+    },
+    {
+      "question_data": {
+        "id": "Q003",
+        "category": "code_understanding",
+        "difficulty": "beginner",
+        "question": "What does this code do?\n\nfor i in range(3):\n    print(i)",
+        "expected_retrieval_topics": [
+          "for loop",
+          "range",
+          "print",
+          "iteration"
+        ],
+        "expected_behavior": "The system should explain that the code prints 0, 1, and 2, and should explain why range(3) stops before 3.",
+        "evaluation_focus": [
+          "answer_faithfulness",
+          "novice_readability",
+          "citation_accuracy"
+        ]
+      },
+      "generated_result": {
+        "query": "What does this code do?\n\nfor i in range(3):\n    print(i)",
+        "answer_status": "answered",
+        "answer": "This code uses a `for` loop to repeat a block of code three times [S1].  \n\nThe `range(3)` function generates a sequence of numbers starting at 0 and going up to (but not including) 3, so it produces the values 0, 1, 2 [S2].  \n\nThe loop variable `i` takes each value from that sequence in turn. For each value of `i`, the `print(i)` statement outputs the current value of `i`.  \n\nSo, the code will output:  \n0  \n1  \n2  \n\nThis is an example of using a `for` loop when you know in advance how many times you want to repeat something — here, exactly 3 times [S1].",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "python_loops.txt_chunk_002",
+            "source": "python_loops.txt",
+            "similarity_score": 0.5866,
+            "text_preview": ":\nprint(fruit)\nThis will output:\napple\nbanana\ncherry\nThe variable fruit takes each value from the list in turn.\nThe while Loop\nA while loop repeats a block of code as long as a condition is True. When the condition becomes False, the loop stops.\ncount = 0\nwhile count < 3:\nprint(count)\ncount = count "
+          },
+          {
+            "source_id": "S2",
+            "chunk_id": "python_loops.txt_chunk_003",
+            "source": "python_loops.txt",
+            "similarity_score": 0.5375,
+            "text_preview": ".\nUse a while loop when you want to keep repeating something until a condition changes, and you do not know in advance how many repetitions will be needed.\nThe range() Function\nrange() generates a sequence of numbers. It has three forms:\nrange(stop)              starts at 0, stops before stop\nrange("
+          },
+          {
+            "source_id": "S3",
+            "chunk_id": "python_functions.txt_chunk_002",
+            "source": "python_functions.txt",
+            "similarity_score": 0.5059,
+            "text_preview": "!\")\nThis defines a function called greet. The function does not run yet. It is just being defined.\nCalling a Function\nTo run a function, you call it by writing its name followed by parentheses.\ngreet()\nThis will output:\nHello, learner!\nYou can call the same function as many times as you like.\ngreet("
+          }
+        ]
+      },
+      "latency_seconds": 31.93,
+      "error": ""
+    },
+    {
+      "question_data": {
+        "id": "Q004",
+        "category": "debugging",
+        "difficulty": "beginner",
+        "question": "Why does this code not work?\n\nx = 5\nif x > 3\n    print(\"x is greater than 3\")",
+        "expected_retrieval_topics": [
+          "if statements",
+          "syntax error",
+          "colon",
+          "Python conditionals"
+        ],
+        "expected_behavior": "The system should identify the missing colon after the if condition and explain the corrected version.",
+        "evaluation_focus": [
+          "retrieval_relevance",
+          "answer_faithfulness",
+          "debugging_support"
+        ]
+      },
+      "generated_result": {
+        "query": "Why does this code not work?\n\nx = 5\nif x > 3\n    print(\"x is greater than 3\")",
+        "answer_status": "answered",
+        "answer": "The code does not work because it is missing a colon after the `if` statement.\n\nIn Python, every `if`, `for`, `while`, `elif`, or `else` statement must end with a colon (`:`) to indicate that a block of code follows [S1][S2]. Without the colon, Python raises a `SyntaxError` because it cannot understand the structure of the code.\n\nYour code:\n```python\nx = 5\nif x > 3\n    print(\"x is greater than 3\")\n```\n\nThis line:\n```python\nif x > 3\n```\nis missing the colon after `if x > 3`. The correct version should be:\n```python\nx = 5\nif x > 3:\n    print(\"x is greater than 3\")\n```\n\nThe colon tells Python that the indented block below (the `print` statement) belongs to the `if` condition [S2].\n\nNote: The condition `x > 3` is correct because 5 is greater than 3, so the message would print if the code were valid. But the missing colon causes the code to fail immediately with a `SyntaxError` [S1][S3].",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "python_errors.txt_chunk_001",
+            "source": "python_errors.txt",
+            "similarity_score": 0.6523,
+            "text_preview": "Python Common Errors\nWhen Python cannot run your code, it displays an error message. Learning to read these messages is one of the most important skills for a beginner programmer. Each error message tells you what went wrong and on which line.\nSyntaxError\nA SyntaxError means Python could not underst"
+          },
+          {
+            "source_id": "S2",
+            "chunk_id": "python_conditionals.txt_chunk_001",
+            "source": "python_conditionals.txt",
+            "similarity_score": 0.614,
+            "text_preview": "Python Conditionals\nConditionals allow a program to make decisions. Depending on whether a condition is True or False, the program will follow different paths.\nThe if Statement\nAn if statement checks a condition. If the condition is True, the indented block of code below it runs. If the condition is"
+          },
+          {
+            "source_id": "S3",
+            "chunk_id": "python_conditionals.txt_chunk_004",
+            "source": "python_conditionals.txt",
+            "similarity_score": 0.571,
+            "text_preview": "perators commonly used in conditions:\n==    equal to\n!=    not equal to\n>     greater than\n<     less than\n>=    greater than or equal to\n<=    less than or equal to\nExample:\nif temperature == 100:\nprint(\"Water is boiling\")\nCombining Conditions\nYou can combine conditions using and and or.\nage = 20\nh"
+          }
+        ]
+      },
+      "latency_seconds": 32.39,
+      "error": ""
+    },
+    {
+      "question_data": {
+        "id": "Q005",
+        "category": "error_message",
+        "difficulty": "beginner",
+        "question": "What does SyntaxError: expected ':' mean in Python?",
+        "expected_retrieval_topics": [
+          "SyntaxError",
+          "colon",
+          "if statement",
+          "for loop",
+          "while loop",
+          "function definition"
+        ],
+        "expected_behavior": "The system should explain that Python expected a colon after a statement header such as if, for, while, or def.",
+        "evaluation_focus": [
+          "retrieval_relevance",
+          "citation_accuracy",
+          "answer_faithfulness"
+        ]
+      },
+      "generated_result": {
+        "query": "What does SyntaxError: expected ':' mean in Python?",
+        "answer_status": "answered",
+        "answer": "The error message `SyntaxError: expected ':'` in Python means that a required colon (`:`) is missing at the end of a statement that needs one.\n\nIn Python, certain statement headers—like `if`, `for`, `while`, `elif`, `else`, and `def`—must end with a colon to indicate that a block of code follows. Without the colon, Python cannot understand the structure of the code and raises this error.\n\nFor example, this code causes a `SyntaxError: expected ':'`:\n\n```python\nif x > 5\nprint(\"x is greater\")\n```\n\nThe fix is to add the missing colon after the condition:\n\n```python\nif x > 5:\n    print(\"x is greater\")\n```\n\nThis follows the rule that every conditional statement (like `if`) must end with a colon [S1][S3].\n\nNote: This error is specifically about syntax and does not involve indentation or variable definitions. It only occurs when a colon is missing after an `if`, `for`, `while`, `def`, or similar statement header [S1][S3].",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "python_errors.txt_chunk_001",
+            "source": "python_errors.txt",
+            "similarity_score": 0.6547,
+            "text_preview": "Python Common Errors\nWhen Python cannot run your code, it displays an error message. Learning to read these messages is one of the most important skills for a beginner programmer. Each error message tells you what went wrong and on which line.\nSyntaxError\nA SyntaxError means Python could not underst"
+          },
+          {
+            "source_id": "S2",
+            "chunk_id": "python_errors.txt_chunk_002",
+            "source": "python_errors.txt",
+            "similarity_score": 0.5903,
+            "text_preview": "rackets or parentheses, missing quotation marks around strings, and using = instead of == in a condition.\nIndentationError\nAn IndentationError means the indentation of your code is incorrect. Python uses indentation to group lines of code. If the indentation is inconsistent, Python cannot follow the"
+          },
+          {
+            "source_id": "S3",
+            "chunk_id": "python_conditionals.txt_chunk_001",
+            "source": "python_conditionals.txt",
+            "similarity_score": 0.5899,
+            "text_preview": "Python Conditionals\nConditionals allow a program to make decisions. Depending on whether a condition is True or False, the program will follow different paths.\nThe if Statement\nAn if statement checks a condition. If the condition is True, the indented block of code below it runs. If the condition is"
+          }
+        ]
+      },
+      "latency_seconds": 36.06,
+      "error": ""
+    },
+    {
+      "question_data": {
+        "id": "Q006",
+        "category": "debugging",
+        "difficulty": "beginner",
+        "question": "Why does this code print the wrong result?\n\nnumbers = [1, 2, 3]\ntotal = 0\nfor number in numbers:\n    total = number\nprint(total)",
+        "expected_retrieval_topics": [
+          "loops",
+          "accumulator pattern",
+          "assignment",
+          "lists"
+        ],
+        "expected_behavior": "The system should explain that total is being overwritten instead of accumulated, and should suggest total = total + number.",
+        "evaluation_focus": [
+          "debugging_support",
+          "answer_faithfulness",
+          "novice_readability"
+        ]
+      },
+      "generated_result": {
+        "query": "Why does this code print the wrong result?\n\nnumbers = [1, 2, 3]\ntotal = 0\nfor number in numbers:\n    total = number\nprint(total)",
+        "answer_status": "answered",
+        "answer": "The code prints the wrong result because of a mistake in the **accumulator pattern** [S1].\n\nIn the code:\n```python\nnumbers = [1, 2, 3]\ntotal = 0\nfor number in numbers:\n    total = number\nprint(total)\n```\n\nThe variable `total` starts at 0, which is correct. However, in each iteration of the loop, `total` is **reassigned to the current number** (like `total = 1`, then `total = 2`, then `total = 3`), instead of **adding** the current number to the running total.\n\nThis means that after the loop, `total` holds the **last number** in the list (3), not the sum of all numbers (1 + 2 + 3 = 6).\n\nTo fix this, the loop should use the **accumulator pattern**, where the total is updated by adding each number to the current total. The correct version is:\n\n```python\nnumbers = [1, 2, 3]\ntotal = 0\nfor number in numbers:\n    total = total + number\nprint(total)\n```\n\nThis will output `6`, which is the correct sum [S1].\n\n> 🔍 **",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "python_loops.txt_chunk_003",
+            "source": "python_loops.txt",
+            "similarity_score": 0.5646,
+            "text_preview": ".\nUse a while loop when you want to keep repeating something until a condition changes, and you do not know in advance how many repetitions will be needed.\nThe range() Function\nrange() generates a sequence of numbers. It has three forms:\nrange(stop)              starts at 0, stops before stop\nrange("
+          },
+          {
+            "source_id": "S2",
+            "chunk_id": "python_variables.txt_chunk_004",
+            "source": "python_variables.txt",
+            "similarity_score": 0.5614,
+            "text_preview": "o not need to declare the type yourself. Python handles this for you.\nUsing Variables in Calculations\nVariables that store numbers can be used in arithmetic.\nprice = 10\nquantity = 3\ntotal = price * quantity\nprint(total)\nThis will output:\n30\nCommon Beginner Mistakes\nForgetting to assign a value befor"
+          },
+          {
+            "source_id": "S3",
+            "chunk_id": "python_lists.txt_chunk_005",
+            "source": "python_lists.txt",
+            "similarity_score": 0.5504,
+            "text_preview": "luding the end index.\nCommon Mistakes\nAccessing index 0 when you expect position 1 is very common. Always remember that Python lists start at index 0.\nTrying to access an index that is equal to the length of the list will cause an IndexError, because the last valid index is always length minus 1.\nnu"
+          }
+        ]
+      },
+      "latency_seconds": 35.46,
+      "error": ""
+    },
+    {
+      "question_data": {
+        "id": "Q007",
+        "category": "staged_hint",
+        "difficulty": "beginner",
+        "question": "I need help writing a loop to calculate the sum of numbers in a list, but do not give me the full answer immediately.",
+        "expected_retrieval_topics": [
+          "loops",
+          "lists",
+          "accumulator pattern",
+          "sum"
+        ],
+        "expected_behavior": "The system should provide staged hints instead of immediately giving a complete solution.",
+        "evaluation_focus": [
+          "staged_hint_quality",
+          "novice_readability",
+          "learning_support"
+        ]
+      },
+      "generated_result": {
+        "query": "I need help writing a loop to calculate the sum of numbers in a list, but do not give me the full answer immediately.",
+        "answer_status": "hint",
+        "answer": "Think about keeping one running value that represents the total so far and updating it once for each item [S1]. What should that value represent after each loop iteration?",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "python_loops.txt_chunk_003",
+            "source": "python_loops.txt",
+            "similarity_score": 0.5699,
+            "text_preview": ".\nUse a while loop when you want to keep repeating something until a condition changes, and you do not know in advance how many repetitions will be needed.\nThe range() Function\nrange() generates a sequence of numbers. It has three forms:\nrange(stop)              starts at 0, stops before stop\nrange("
+          },
+          {
+            "source_id": "S2",
+            "chunk_id": "python_loops.txt_chunk_004",
+            "source": "python_loops.txt",
+            "similarity_score": 0.5438,
+            "text_preview": "r number in numbers:\ntotal = total + number\nprint(total)\nThis will output:\n15\nThe variable total starts at 0. Each time through the loop, the current number is added to total. After the loop ends, total holds the sum of all the numbers.\nA common mistake is to write total = number instead of total = "
+          },
+          {
+            "source_id": "S3",
+            "chunk_id": "python_loops.txt_chunk_002",
+            "source": "python_loops.txt",
+            "similarity_score": 0.4448,
+            "text_preview": ":\nprint(fruit)\nThis will output:\napple\nbanana\ncherry\nThe variable fruit takes each value from the list in turn.\nThe while Loop\nA while loop repeats a block of code as long as a condition is True. When the condition becomes False, the loop stops.\ncount = 0\nwhile count < 3:\nprint(count)\ncount = count "
+          }
+        ]
+      },
+      "latency_seconds": 21.07,
+      "error": ""
+    },
+    {
+      "question_data": {
+        "id": "Q008",
+        "category": "concept_explanation",
+        "difficulty": "beginner",
+        "question": "What is a function in programming and why would I use one?",
+        "expected_retrieval_topics": [
+          "functions",
+          "parameters",
+          "return values",
+          "code reuse"
+        ],
+        "expected_behavior": "The system should explain functions as reusable blocks of code and cite relevant beginner material.",
+        "evaluation_focus": [
+          "retrieval_relevance",
+          "citation_accuracy",
+          "novice_readability"
+        ]
+      },
+      "generated_result": {
+        "query": "What is a function in programming and why would I use one?",
+        "answer_status": "answered",
+        "answer": "A **function** in programming is a reusable block of code that performs a specific task. Instead of writing the same code in many places, you define it once as a function and call it whenever you need it [S1].\n\nYou would use a function to make your program easier to read, easier to maintain, and easier to test. If you need to change how a task works, you only need to update the code inside the function — you don’t have to search through every part of your program [S1].\n\nFor example, if you want to say \"Hello\" to someone, you can define a function called `greet()` that prints that message. Once you define it, you can call it as many times as you want:\n\n```python\ndef greet():\n    print(\"Hello, learner!\")\ngreet()\n```\n\nThis will output:  \nHello, learner!\n\nYou can also make functions flexible by adding **parameters**, which are values you pass into the function when you call it. For example:\n\n```python\ndef greet(name):\n    print(\"Hello \" + name)\ngreet(\"Alice\")\ngreet(\"Bob\")\n```\n\nThis will output:  \nHello Alice  \nHello Bob  \n\nHere, `name` is a parameter that receives the value you pass",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "python_functions.txt_chunk_001",
+            "source": "python_functions.txt",
+            "similarity_score": 0.572,
+            "text_preview": "Python Functions\nA function is a reusable block of code that performs a specific task. Instead of writing the same code in multiple places, you define it once as a function and call it whenever you need it.\nWhy Use Functions\nFunctions make programs easier to read, easier to maintain, and easier to t"
+          },
+          {
+            "source_id": "S2",
+            "chunk_id": "python_functions.txt_chunk_002",
+            "source": "python_functions.txt",
+            "similarity_score": 0.5347,
+            "text_preview": "!\")\nThis defines a function called greet. The function does not run yet. It is just being defined.\nCalling a Function\nTo run a function, you call it by writing its name followed by parentheses.\ngreet()\nThis will output:\nHello, learner!\nYou can call the same function as many times as you like.\ngreet("
+          },
+          {
+            "source_id": "S3",
+            "chunk_id": "python_functions.txt_chunk_005",
+            "source": "python_functions.txt",
+            "similarity_score": 0.4561,
+            "text_preview": "fter the def line will cause a SyntaxError.\nForgetting to call the function means the code inside it never runs.\nConfusing print() with return is a common mistake. Use return when you want to use the result of a function in another calculation."
+          }
+        ]
+      },
+      "latency_seconds": 35.52,
+      "error": ""
+    },
+    {
+      "question_data": {
+        "id": "Q009",
+        "category": "code_understanding",
+        "difficulty": "beginner",
+        "question": "What is the output of this code?\n\nname = \"Ana\"\nprint(\"Hello \" + name)",
+        "expected_retrieval_topics": [
+          "strings",
+          "print",
+          "string concatenation",
+          "variables"
+        ],
+        "expected_behavior": "The system should explain that the output is Hello Ana and briefly explain string concatenation.",
+        "evaluation_focus": [
+          "answer_faithfulness",
+          "novice_readability",
+          "citation_accuracy"
+        ]
+      },
+      "generated_result": {
+        "query": "What is the output of this code?\n\nname = \"Ana\"\nprint(\"Hello \" + name)",
+        "answer_status": "answered",
+        "answer": "The output of the code is:\n\nHello Ana\n\n**Explanation:**\n\nThe code assigns the string \"Ana\" to the variable `name` [S3]. Then, it uses the `print()` function to display the text \"Hello \" followed by the value of `name` [S2]. This is done using string concatenation (`+`), which joins two strings together.\n\nSince `name` holds the value \"Ana\", the expression `\"Hello \" + name` becomes `\"Hello Ana\"`, and `print()` outputs that string to the screen.\n\nThis behavior is consistent with how string concatenation works in Python, as described in [S2].",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "python_functions.txt_chunk_002",
+            "source": "python_functions.txt",
+            "similarity_score": 0.4856,
+            "text_preview": "!\")\nThis defines a function called greet. The function does not run yet. It is just being defined.\nCalling a Function\nTo run a function, you call it by writing its name followed by parentheses.\ngreet()\nThis will output:\nHello, learner!\nYou can call the same function as many times as you like.\ngreet("
+          },
+          {
+            "source_id": "S2",
+            "chunk_id": "python_variables.txt_chunk_003",
+            "source": "python_variables.txt",
+            "similarity_score": 0.4438,
+            "text_preview": "ing a Variable\nYou can display the value of a variable using print().\nname = \"Alice\"\nprint(name)\nThis will output:\nAlice\nYou can also print text and a variable together using string concatenation or an f-string.\nname = \"Alice\"\nprint(\"Hello \" + name)\nprint(f\"Hello {name}\")\nBoth of these will output:\n"
+          },
+          {
+            "source_id": "S3",
+            "chunk_id": "python_variables.txt_chunk_001",
+            "source": "python_variables.txt",
+            "similarity_score": 0.4413,
+            "text_preview": "Python Variables\nA variable is a name that stores a value in a program. When you create a variable, Python sets aside a space in memory to hold that value. You can then use the variable name to access or change the value later.\nCreating a Variable\nIn Python, you create a variable by writing the vari"
+          }
+        ]
+      },
+      "latency_seconds": 27.91,
+      "error": ""
+    },
+    {
+      "question_data": {
+        "id": "Q010",
+        "category": "misconception",
+        "difficulty": "beginner",
+        "question": "Does Python start counting list positions from 1?",
+        "expected_retrieval_topics": [
+          "lists",
+          "indexing",
+          "zero-based indexing"
+        ],
+        "expected_behavior": "The system should correct the misconception and explain that Python list indexing starts at 0.",
+        "evaluation_focus": [
+          "answer_faithfulness",
+          "citation_accuracy",
+          "misconception_handling"
+        ]
+      },
+      "generated_result": {
+        "query": "Does Python start counting list positions from 1?",
+        "answer_status": "answered",
+        "answer": "No, Python does not start counting list positions from 1. Python uses zero-based indexing, which means the first item in a list is at index 0, not index 1 [S2]. For example, in the list `[\"apple\", \"banana\", \"cherry\"]`, \"apple\" is at index 0, \"banana\" is at index 1, and \"cherry\" is at index 2 [S3].\n\nThis is a common misconception for beginners, but it is important to remember that Python always starts counting from 0 [S3]. Trying to access an index that is equal to the length of the list (like index 3 in a list of length 3) will result in an `IndexError` because the valid indices go from 0 to (length - 1) [S1].\n\nExample:\n```python\nfruits = [\"apple\", \"banana\", \"cherry\"]\nprint(fruits[0])  # apple\nprint(fruits[1])  # banana\nprint(fruits[2])  # cherry\n```\nAccessing `fruits[3]` would raise an `IndexError` because there is no item at that position [S1].",
+        "sources": [
+          {
+            "source_id": "S1",
+            "chunk_id": "python_lists.txt_chunk_005",
+            "source": "python_lists.txt",
+            "similarity_score": 0.6107,
+            "text_preview": "luding the end index.\nCommon Mistakes\nAccessing index 0 when you expect position 1 is very common. Always remember that Python lists start at index 0.\nTrying to access an index that is equal to the length of the list will cause an IndexError, because the last valid index is always length minus 1.\nnu"
+          },
+          {
+            "source_id": "S2",
+            "chunk_id": "python_lists.txt_chunk_001",
+            "source": "python_lists.txt",
+            "similarity_score": 0.4836,
+            "text_preview": "Python Lists\nA list is a data structure that stores multiple values in a single variable. Lists are one of the most commonly used data structures in Python.\nCreating a List\nYou create a list by placing values inside square brackets, separated by commas.\nfruits = [\"apple\", \"banana\", \"cherry\"]\nnumbers"
+          },
+          {
+            "source_id": "S3",
+            "chunk_id": "python_lists.txt_chunk_002",
+            "source": "python_lists.txt",
+            "similarity_score": 0.4827,
+            "text_preview": "its = [\"apple\", \"banana\", \"cherry\"]\nprint(fruits[0])    # apple\nprint(fruits[1])    # banana\nprint(fruits[2])    # cherry\nThe first item is at index 0, the second at index 1, and the third at index 2.\nThis is one of the most common misconceptions for beginners. Python does not start counting from 1."
+          }
+        ]
+      },
+      "latency_seconds": 34.65,
+      "error": ""
+    },
+    {
+      "question_data": {
+        "id": "Q011",
+        "category": "unsupported_question",
+        "difficulty": "beginner",
+        "question": "What will be on my final programming exam?",
+        "expected_retrieval_topics": [
+          "assessment policy",
+          "course policy"
+        ],
+        "expected_behavior": "If no approved source is available, the system should avoid guessing and provide an uncertainty or refusal message.",
+        "evaluation_focus": [
+          "refusal_appropriateness",
+          "unsupported_claim_reduction",
+          "trust_calibration"
+        ]
+      },
+      "generated_result": {
+        "query": "What will be on my final programming exam?",
+        "answer_status": "insufficient_evidence",
+        "answer": "I do not have enough source evidence to answer this question reliably.",
+        "sources": []
+      },
+      "latency_seconds": 14.97,
+      "error": ""
+    },
+    {
+      "question_data": {
+        "id": "Q012",
+        "category": "out_of_scope",
+        "difficulty": "beginner",
+        "question": "Can you give me medical advice about a headache?",
+        "expected_retrieval_topics": [
+          "out of scope"
+        ],
+        "expected_behavior": "The system should identify that the question is outside introductory programming support and refuse or redirect appropriately.",
+        "evaluation_focus": [
+          "refusal_appropriateness",
+          "scope_control",
+          "unsupported_claim_reduction"
+        ]
+      },
+      "generated_result": {
+        "query": "Can you give me medical advice about a headache?",
+        "answer_status": "out_of_scope",
+        "answer": "This request is outside the scope of this introductory programming support system. I cannot provide medical advice. Please consult a qualified healthcare professional or an appropriate trusted health service.",
+        "sources": []
+      },
+      "latency_seconds": 0.0,
+      "error": ""
+    }
+  ]
+}
