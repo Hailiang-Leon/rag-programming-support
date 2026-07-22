@@ -52,3 +52,5 @@ build/
 !data/evaluation/technical_evaluation_final_raw.json
 !data/evaluation/technical_evaluation_final_scores.csv
 !data/evaluation/technical_evaluation_comparison.csv
+!data/evaluation/technical_evaluation_rc1_raw.json
+!data/evaluation/technical_evaluation_rc1_scores.csv
